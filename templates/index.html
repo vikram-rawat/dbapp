@@ -1,185 +1,287 @@
-<style media="screen">
-  .container {
-    min-width: 320px;
-  }
 
-  header {
-    background-color: #62a5ee;
-    padding: 10px 20px;
-    box-sizing: border-box;
-  }
 
-  .logo img {
-    width: 80px;
-  }
-
-  .titles h1 {
-    font-size: 30px;
-    font-weight: 300;
-    color: white;
-    margin-bottom: 13px;
-    margin-top: 5px;
-  }
-
-  .titles h2 {
-    font-weight: 300;
-    font-size: 18px;
-    display: inline-block;
-    margin: 0;
-  }
-
-  .titles a {
-    color: white;
-    text-decoration: underline;
-  }
-
-  .titles i {
-    margin-right: 5px;
-    text-decoration: none;
-  }
-
-  .titles .documentation {
-    margin-left: 28px;
-  }
-
-  .subtitle {
-    color: white;
-    margin: 0;
-    padding: 13px 0;
-    background-color: #2a3543;
-    margin-bottom: 20px;
-  }
-
-  .subtitle h3 {
-    font-size: 22px;
-    font-weight: 400;
-    margin: 0;
-  }
-
-  table {
-    font-size: 14px;
-  }
-
-  table.table tbody tr td {
-    border-top: 0;
-    padding: 10px;
-  }
-
-  .foot {
-    text-align: right;
-    color: #c5c5c5;
-    font-weight: 300;
-  }
-
-  .foot a {
-    color: #8b8b8b;
-    text-decoration: underline;
-  }
-
-  .centered {
-    text-align: center;
-  }
-
-  @media all and (max-width: 770px) {
-    .titles h1 {
-      font-size: 25px;
-      margin: 15px 0 5px 0;
-    }
-  }
-
-  @media all and (max-width: 640px) {
-    .titles h1 {
-      font-size: 23px;
-      margin: 15px 0 5px 0;
-    }
-    .titles h2 {
-      font-size: 15px;
-    }
-    .titles .documentation {
-      margin-left: 10px;
-    }
-  }
-
-  @media all and (max-width: 530px) {
-    .titles h1 {
-      font-size: 20px;
-      margin: 5px 0;
-    }
-    .logo {
-      padding: 0
-    }
-    .logo img {
-      width: 100%
-    }
-    .titles .documentation {
-      margin-left: 0px;
-      margin-top: 5px;
-      display: block;
-    }
-  }
-</style>
-
-<header>
-  <div class="container">
+<div class="section scrollspy" id="intro">
     <div class="row">
-      <div class="col-md-1 col-sm-2 col-xs-2 logo">
-        <a href="<%= rootPath() %>"><img src="<%= rootPath() %>assets/images/logo.svg" alt=""></a>
-      </div>
-      <div class="col-md-9 col-sm-9 col-xs-10 titles">
-        <h1><%= t("welcome_greeting") %></h1>
-        <h2>
-          <a href="https://github.com/gobuffalo/buffalo"><i class="fa fa-github" aria-hidden="true"></i> https://github.com/gobuffalo/buffalo</a>
-        </h2>
-        <h2 class="documentation">
-          <a href="http://gobuffalo.io/"><i class="fa fa-book" aria-hidden="true"></i> Documentation</a>
-        </h2>
-      </div>
-    </div>
+        <div class="slider">
+            <ul class="slides">
+              <li>
+                <img src="<%= assetPath("img/Birthday.jpg") %>">  <!-- random image -->
+                <div class="caption center-align">
+                  <h3>This is our big Tagline!</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+              <li>
+                <img src="<%= assetPath("img/Concerts.jpg") %>"> <!-- random image -->
+                <div class="caption left-align">
+                  <h3>Left Aligned Caption</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+              <li>
+                <img src="<%= assetPath("img/Conference.jpg") %>"> <!-- random image -->
+                <div class="caption right-align">
+                  <h3>Right Aligned Caption</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+              <li>
+                <img src="<%= assetPath("img/Sporting.jpg") %>"  > <!-- random image -->
+                <div class="caption center-align">
+                  <h3>This is our big Tagline!</h3>
+                  <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                </div>
+              </li>
+              <li>
+                  <img src= "<%= assetPath("img/wedding.jpg") %>" > <!-- random image -->
+                  <div class="caption center-align">
+                    <h3>This is our big Tagline!</h3>
+                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                  </div>
+                </li>
+    
+            </ul>
+          </div>
   </div>
-
-</header>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="subtitle">
-      <div class="container">
-        <h3>Defined Routes</h3>
-      </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr text-align="left">
-            <th class="centered">METHOD</th>
-            <th>PATH</th>
-            <th>NAME</th>
-            <th>HANDLER</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          <%= for (r) in routes { %>
-            <tr>
-              <td class="centered">
-                <%= r.Method %>
-              </td>
-              <td>
-                <%= if (r.Method != "GET" || r.Path ~= "{") { %>
-                  <%= r.Path %>
-                <% } else { %>
-                  <a href="<%= r.Path %>"><%= r.Path %></a>
-                <% } %>
-              </td>
-              <td>
-                <%= r.PathName %>
-              </td>
-              <td><code><%= r.HandlerName %></code></td>
-            </tr>
-          <% } %>
-
-        </tbody>
-      </table>
-    </div>
   </div>
-</div>
-<div class="foot"> <span> Powered by <a href="http://gobuffalo.io/">gobuffalo.io</a></span> </div>
+  <div class="divider"></div>
+  
+  <div class="section scrollspy" id ="search">
+       <div class="row">
+          <div class="col s12 m5 l5">
+            <div class="card purple lighten-4 z-depth-5">
+                <div class="card-content">
+                <span class="card-title black-text text-darken-1">
+                Please Let Us Know...
+              </span>
+              </div>
+              <div class="card-panel purple lighten-3">
+                <div class="row">
+                  <div class="amber-text text-lighten-3">
+                    <div class="col s10 m10">
+                      <span class="new badge" data-badge-caption="">
+                          like to share your location?
+                      </span>
+                    </div>
+                    <div class="col s2 m2">
+                        <a class="btn-floating pulse waves-effect waves-light red modal-trigger" href="#modal1">
+                            <i class="material-icons">add_location</i></a>
+      
+                    </div>
+                  </div>
+                    <div class="input-field col s12">
+                        <select>
+                          <optgroup label="Transportation">
+                            <option value="1">Cabs</option>
+                            <option value="2">Horses</option>
+                            <option value="3">Chariots</option>
+                            <option value="4">Buses</option>
+                          </optgroup>
+                          <optgroup label="Music">
+                            <option value="5">DJ</option>
+                            <option value="6">Dhol</option>
+                            <option value="7">Band</option>
+                          </optgroup>
+                        </select>
+                        <label>What You are looking for </label>
+                      </div>
+  
+                      <div class="input-field col s12">
+                        <select>
+                            <option value="1">Rajasthan</option>
+                            <option value="2">Haryana</option>
+                            <option value="3">New Delhi</option>
+                            <option value="4">Uttar Pradesh</option>
+                            <option value="5">Maharashtra</option>
+                          </optgroup>
+                        </select>
+                        <label>State</label>
+                      </div>
+  
+                      <div class="input-field col s12">
+                          <select>
+                              <option value="1">Alwar</option>
+                              <option value="2">Gurgaon</option>
+                              <option value="3">New Delhi</option>
+                              <option value="4">Gorakhpur</option>
+                              <option value="5">Mumbai</option>
+                            </optgroup>
+                          </select>
+                          <label>District</label>
+                        </div>
+  
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="1">Bhiwadi</option>
+                                <option value="2">Gurgaon</option>
+                                <option value="3">New Delhi</option>
+                                <option value="4">Gorakhpur</option>
+                                <option value="5">Mumbai</option>
+                              </optgroup>
+                            </select>
+                            <label>City</label>
+                          </div>
+  
+                          
+  
+                        <a class="waves-effect waves-light btn">
+                          <i class="material-icons left">location_searching</i>
+                          Submit</a>
+     
+                </div>
+            </div>
+            </div>
+          </div>
+          <div class="col s12 m7 l7">
+              <div class="card purple lighten-5 z-depth-5">
+                  <div class="card-content">
+                  <span class="card-title black-text text-lighten-3">
+                  Get the Results
+                </span>
+                </div>
+                <div class="card-panel purple lighten-4">
+                  <div class="row">
+                      <div id="mapid"></div>
+                  </div>
+              </div>
+              </div>
+              
+          </div>
+        </div>
+    </div>        
+  
+    <div class="divider"></div>
+  
+  
+  
+    <div class="section scrollspy" id="about">  
+        <div class="container">
+   
+            <!--   Icon Section   -->
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+                  <h5 class="center">Get rid of Searching Vendors</h5>
+      
+                  <p class="light">
+                    Thousand's of Vendors to choose from. And you just have to make a call. If you are too busy 
+                    in planning we can call you back. and you can always pick the cheapest of Vendors.
+                  </p>
+                </div>
+              </div>
+      
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+                  <h5 class="center">User Experience Focused</h5>
+      
+                  <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                </div>
+              </div>
+      
+              <div class="col s12 m4">
+                <div class="icon-block">
+                  <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+                  <h5 class="center">Easy to work with</h5>
+      
+                  <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                </div>
+              </div>
+            </div>
+      
+          <br><br>
+        </div>
+       
+            <br><br>
+          </div>
+        
+   
+  
+    <div class="divider"></div>
+  
+  
+  
+   <div class="section scrollspy teal lighten-4" id="contact">
+   
+  <div class="row">
+    <div class="col s5 m5"></div>
+    <div class="col s2 m2">    <img class="responsive-img circle" src= "<%= assetPath("img/help.png") %>">
+    </div>
+    <div class="col s5 m5"></div>
+   </div> 
+  
+  <div class="row">
+    <p class="center-align"> No Worries If You Don't Have Time To Call </p>
+   </div> 
+   <div class="row">
+      <div class="col s3 m3"></div>
+      <div class="col s6 m6">    <div class="divider"></div>
+      </div>
+      <div class="col s3 m3"></div>
+   </div>
+   <div class="row">
+      <p class="center-align purple-text text-darken-1">Please Allow Us To Reach You</p>
+     </div> 
+    
+    <div class="divider"></div>
+    <div class="teal lighten-3">
+      <div class="row">
+        <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="full_name" type="text" class="validate">
+                <label for="full_name">Full Name</label>
+              </div>
+              
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">phone</i>
+                <input id="telephone_number" type="tel" class="validate">
+                <label for="telephone_number">Telephone</label>
+              </div>
+  
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">phone_android</i>
+                <input id="alternate_number" type="tel" class="validate">
+                <label for="alternate_number">Alternate Number</label>
+              </div>
+  
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">mail</i>
+                <input id="email_address" type="email" class="validate">
+                <label for="email_address">Email Address</label>
+                <span class="helper-text" data-error="Please type a valid Email ID" data-success="right"></span>
+              </div>
+  
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">add_location</i>
+                <textarea id="full_address" class="materialize-textarea"></textarea>
+            <label for="full_address">Full Address</label>
+              </div>
+  
+              <div class="input-field col s12 m6">
+                <i class="material-icons prefix">message</i>
+                <textarea id="message" class="materialize-textarea"></textarea>
+            <label for="message">Message for vendors...</label>
+              </div>
+  
+            </div>
+            <div class="row">
+              <div class="col s3 m5"></div>
+              <div class="col s6 m2">
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                      <i class="material-icons right">send</i>
+                    </button>
+        
+              </div>
+              <div class="col s3 m5"></div>
+  
+            </div>
+      
+            </form>
+          </div>
+        </div>
+          
+        </div>
+  

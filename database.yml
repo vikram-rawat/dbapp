@@ -2,8 +2,9 @@ development:
   dialect: postgres
   database: dbapp_development
   user: postgres
-  password: postgres
+  password: Gurgaon@65
   host: 127.0.0.1
+  port: 5433
   pool: 5
 
 test:
